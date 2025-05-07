@@ -192,9 +192,10 @@ const Login: React.FC = () => {
 
       // Store the type in localStorage
 
-      localStorage.setItem("type", type);
-      console.log(localStorage);
-
+    //   localStorage.setItem("type", type);
+    localStorage.setItem("type", type);
+    localStorage.setItem("email", email);
+    console.log(localStorage);
       // Service and navigation based on type
       switch (type) {
         case "air":
@@ -374,9 +375,9 @@ const Login: React.FC = () => {
             </div>
 
             <div className="form-group">
-                <p style={{fontWeight: "bold", marginBottom: "10px"}}>
+                {/* <p style={{fontWeight: "bold", marginBottom: "10px"}}>
                     Select an Option:
-                </p>
+                </p> */}
                 <div
                     style={{
                         display: "flex",
@@ -384,7 +385,7 @@ const Login: React.FC = () => {
                         gap: "10px",
                     }}
                 >
-                    {["Water", "Air", "Ground"].map((option) => (
+                    {/* {["Air"].map((option) => (
                         <button
                             type="button"
                             key={option}
@@ -404,7 +405,7 @@ const Login: React.FC = () => {
                         >
                             {option}
                         </button>
-                    ))}
+                    ))} */}
                 </div>
             </div>
 

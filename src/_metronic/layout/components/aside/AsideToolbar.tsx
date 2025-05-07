@@ -1,10 +1,27 @@
 import {useAuth} from '../../../../app/modules/auth'
 import {KTIcon, toAbsoluteUrl} from '../../../helpers'
 import {HeaderUserMenu, Search} from '../../../partials'
-
+import {useEffect, useState} from 'react'
 
 const AsideToolbar = () => {
   const {currentUser} = useAuth()
+  const [email, setEmail] = useState<string | null>(null)
+
+  useEffect(() => {
+    // Fetch and parse email from local storage
+    const authData = localStorage.getItem('kt-auth-react-v')
+    if (authData) {
+      try {
+        const parsedData = JSON.parse(authData)
+        setEmail(parsedData.email || 'No email found')
+      } catch (error) {
+        console.error('Error parsing auth data:', error)
+        setEmail('No email found')
+      }
+    } else {
+      setEmail('No email found')
+    }
+  }, [])
 
   return (
     <>
@@ -12,7 +29,7 @@ const AsideToolbar = () => {
       <div className='aside-user d-flex align-items-sm-center justify-content-center py-5'>
         {/*begin::Symbol*/}
         <div className='symbol symbol-50px'>
-          <img src={toAbsoluteUrl('media/avatars/300-1.jpg')} alt='' />
+          {/* <img src={toAbsoluteUrl('media/avatars/300-1.jpg')} alt='' /> */}
         </div>
         {/*end::Symbol*/}
 
@@ -29,7 +46,9 @@ const AsideToolbar = () => {
               {/*end::Username*/}
 
               {/*begin::Description*/}
-              <span className='text-gray-600 fw-bold d-block fs-8 mb-1'>Python dev</span>
+              <span className='text-gray-600 fw-bold d-block fs-8 mb-1'>
+                {email}
+              </span>
               {/*end::Description*/}
 
               {/*begin::Label*/}
@@ -66,11 +85,6 @@ const AsideToolbar = () => {
 
       {/*begin::Aside search*/}
       <div className='aside-search py-5'>
-        {/* <?php Theme::getView('partials/search/_inline', array(
-        'class' => 'w-100',
-        'menu-placement' => 'bottom-start',
-        'responsive' => 'false'
-    ))?> */}
         <Search />
       </div>
       {/*end::Aside search*/}

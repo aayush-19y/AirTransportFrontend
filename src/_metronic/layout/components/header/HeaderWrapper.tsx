@@ -1,7 +1,5 @@
-
 import clsx from 'clsx'
-import {Link} from 'react-router-dom'
-import {KTIcon, toAbsoluteUrl} from '../../../helpers'
+import {KTIcon} from '../../../helpers'
 import {useLayout} from '../../core'
 import {HeaderToolbar} from './HeaderToolbar'
 
@@ -17,15 +15,19 @@ export function HeaderWrapper() {
     >
       {/* begin::Brand */}
       <div className='header-brand'>
-        {/* begin::Logo */}
-        <Link to='/'>
-          <img
-            alt='Logo'
-            src={toAbsoluteUrl('media/logos/default-dark.svg')}
-            className='h-25px h-lg-25px'
-          />
-        </Link>
-        {/* end::Logo */}
+        {/* begin::Text Logo */}
+        <div
+          style={{
+            fontSize: '1.5rem',
+            fontWeight: 'bold',
+            color: '#FF5733', // Bright orange color
+            textTransform: 'uppercase',
+            letterSpacing: '1px',
+          }}
+        >
+          SkyFleet
+        </div>
+        {/* end::Text Logo */}
 
         {aside.minimize && (
           <div

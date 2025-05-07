@@ -35,7 +35,7 @@ const MasterLayout = () => {
               </Content>
             </div>
           </div>
-          <Footer />
+          {/* <Footer /> */}
         </div>
       </div>
 
